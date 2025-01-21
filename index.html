@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #content {
+            display: none; /* 預設不顯示 */
+        }
+    </style>
 </head>
 <body>
-    <main>
+    <div id="loading">影片載入中...</div>
+    <main id="content">
         <p>
-            <video width="250" height="100%" autoplay loop muted playsinline>
+            <video id="video" width="250" height="100%" autoplay loop muted playsinline>
                 <source src="./assets/test.mp4" type='video/mp4; codecs="hvc1"'>
                 <source src="./assets/test.webm" type="video/webm">
                 </video>
@@ -156,5 +162,23 @@
             </li>
         </ul>
     </main>
+    <script>
+        const video = document.querySelector('video');
+        const loading = document.getElementById('loading');
+        const content = document.getElementById('content');
+
+        // 監聽影片的載入事件
+        video.addEventListener('canplaythrough', () => {
+            console.log("影片已完全載入");
+            document.body.style.visibility = 'visible'; // 顯示網頁
+            loading.style.display = 'none'; // 隱藏載入提示
+            content.style.display = 'block'; // 顯示內容
+        });
+
+        video.addEventListener('error', (e) => {
+            console.error("影片載入失敗", e);
+            loading.textContent = "影片載入失敗，請稍後再試";
+        });
+    </script>
 </body>
 </html>
