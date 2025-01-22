@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+  <style>
+    #lottie-container {
+      width: 300px;
+      height: 300px;
+      margin: 0 auto;
+      border: 1px solid #ddd;
+    }
+  </style>
     <style>
         #content {
             display: none; /* 預設不顯示 */
@@ -14,6 +23,7 @@
     <div id="loading">影片載入中...</div>
     <main id="content">
         <p>
+            <div id="lottie-container"></div>
             <video id="video1" width="250" height="100%" autoplay muted playsinline>
                 <source src="./assets/test.mp4" type='video/mp4; codecs="hvc1"'>
                 <source src="./assets/test.webm" type="video/webm">
@@ -191,5 +201,18 @@
             video2.style.display = 'block'; // 顯示內容
         });
     </script>
+     <script>
+        // 取得 Lottie 動畫容器
+        const container = document.getElementById('lottie-container');
+    
+        // 初始化 Lottie 動畫
+        lottie.loadAnimation({
+          container: container, // 指定動畫容器
+          renderer: 'svg', // 可選 'svg', 'canvas', 或 'html'
+          loop: true, // 是否循環播放
+          autoplay: true, // 是否自動播放
+          path: './assets/test.json' // Lottie JSON 文件的 URL
+        });
+      </script>
 </body>
 </html>
