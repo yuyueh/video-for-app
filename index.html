@@ -39,7 +39,7 @@
             </video>
 
             <!-- <embed src="https://www.cathay-cube.com.tw/content/dam/cub-aem-cs/Files/app/114accountsecurity.pdf" type="application/pdf" width="70%" height="200px" /> -->
-            <iframe src="https://www.cathay-cube.com.tw/content/dam/cub-aem-cs/Files/app/114accountsecurity.pdf" frameborder="0" width="70%" height="200px">no support</iframe>
+            <!-- <iframe src="https://www.cathay-cube.com.tw/content/dam/cub-aem-cs/Files/app/114accountsecurity.pdf" frameborder="0" width="70%" height="200px">no support</iframe> -->
         </p>
         <ul>
             <li>
@@ -185,7 +185,7 @@
         </ul>
         
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" integrity="sha512-Z8CqofpIcnJN80feS2uccz+pXWgZzeKxDsDNMD/dJ6997/LSRY+W4NmEt9acwR+Gt9OHN0kkI1CTianCwoqcjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.332/pdf.min.js"></script>
     <div>
         <button id="prev">上一頁</button>
         <button id="next">下一頁</button>
@@ -195,7 +195,7 @@
     <script>
         // pdf檔案路徑，如果是絕對路徑，請Server使用CORS
         var url = "//www.cathay-cube.com.tw/content/dam/cub-aem-cs/Files/app/114accountsecurity.pdf";
-        pdfjsLib.workerSrc = "//mozilla.github.io/pdf.js/build/pdf.worker.js";
+        PDFJS.workerSrc = "//mozilla.github.io/pdf.js/build/pdf.worker.js";
   
         var pdfDoc = null,
         pageNum = 1,
@@ -259,7 +259,7 @@
         }
         document.getElementById( "next" ).addEventListener( "click", onNextPage );
   
-        pdfjsLib.getDocument( url ).then( function( pdfDoc_ ) {
+        PDFJS.getDocument( url ).then( function( pdfDoc_ ) {
             pdfDoc = pdfDoc_;
             document.getElementById( "page_count" ).textContent = pdfDoc.numPages;
             renderPage( pageNum );
