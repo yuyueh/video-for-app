@@ -265,7 +265,7 @@
             pdfDoc = pdfDoc_;
             document.getElementById( "page_count" ).textContent = pdfDoc.numPages;
             renderPage( pageNum );
-        });
+        }).catch(console.log);
     </script>
     <script>
         const video = document.querySelector('video');
