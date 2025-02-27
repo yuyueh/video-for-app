@@ -208,6 +208,7 @@
         function renderPage( num )
         {
             pageRendering = true;
+            console.log(pdfDoc);
             pdfDoc.getPage( num ).then( function( page ) {
                 var viewport = page.getViewport( scale );
                 canvas.height = viewport.height;
@@ -260,6 +261,7 @@
         document.getElementById( "next" ).addEventListener( "click", onNextPage );
   
         PDFJS.getDocument( url ).then( function( pdfDoc_ ) {
+            console.log(pdfDoc_);
             pdfDoc = pdfDoc_;
             document.getElementById( "page_count" ).textContent = pdfDoc.numPages;
             renderPage( pageNum );
